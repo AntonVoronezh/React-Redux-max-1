@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 // import { BrowserRouter } from 'react-router-dom';
 // import { Provider } from 'react-redux';
 // import createStore from './store/store';
-import App from './containers/App/App';
+import App from './components/App';
 import 'semantic-ui-css/semantic.min.css';
 
 // const store = createStore();
