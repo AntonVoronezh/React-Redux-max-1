@@ -3,23 +3,24 @@ import './TopMenu.scss';
 import { Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-const TopMenu = () => {
-	return (
-		<Menu>
-			<Link to="/">
-				<Menu.Item content="На главную" active={true} />
+
+
+const TopMenu = ({ onChange, location, menuList }) => {
+	const { pathname } = location;
+
+	const onClickHandler = pathname => {
+		onChange(pathname);
+	};
+
+	const menuItems = menuList.map(({ id, to, content }) => {
+		return (
+			<Link key={id} to={to} onClick={() => onClickHandler(pathname)}>
+				<Menu.Item content={content} active={pathname === to} />
 			</Link>
-			<Link to="/news">
-				<Menu.Item content="Новости" />
-			</Link>
-			<Link to="/profile">
-				<Menu.Item content="Профайл" />
-			</Link>
-			<Link to="/login">
-				<Menu.Item content="Логин" position="right" />
-			</Link>
-		</Menu>
-	);
+		);
+	});
+
+	return <Menu>{menuItems}</Menu>;
 };
 
 export default TopMenu;
