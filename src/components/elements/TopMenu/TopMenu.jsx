@@ -5,7 +5,10 @@ import { Menu } from 'semantic-ui-react';
 const TopMenu = () => {
 	return (
 		<Menu>
-			<h2>TopMenu</h2>
+			<Menu.Item content="На главную" active={true} />
+			<Menu.Item content="Новости" />
+			<Menu.Item content="Профайл" />
+			<Menu.Item content="Логин" position="right" />
 		</Menu>
 	);
 };

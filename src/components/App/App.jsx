@@ -6,7 +6,7 @@ import { Container } from 'semantic-ui-react';
 
 const App = () => {
 	return (
-		<Container>
+		<Container className="top">
 			<Fragment>
 
 				<TopMenu />
