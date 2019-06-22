@@ -19,10 +19,13 @@ class LoginPageContainer extends Component {
 	}
 }
 
-const mapStateToProps = ({ login: { userNameText, passwordText } }) => {
+const mapStateToProps = ({ login: { userNameText, passwordText, status, isLoggedIn, errorMsg } }) => {
 	return {
 		userNameText,
 		passwordText,
+		status,
+		isLoggedIn,
+		errorMsg,
 	};
 };
 
