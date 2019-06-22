@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { LoginPage } from '../../../components/pages';
 import { changeUsernameTextAC, changePasswordTextAC } from '../../../store/actions';
 import { Spinner } from '../../../components/elements';
-import { ErrorIndicator } from '../../../components/errors';
 
 class LoginPageContainer extends Component {
 	render() {
@@ -13,9 +12,6 @@ class LoginPageContainer extends Component {
 		if (isLoading) {
 			return <Spinner />;
 		}
-		// if (errorMsg) {
-		// 	return <ErrorIndicator />;
-		// }
 		if (isLoggedIn) {
 			return <Redirect to="/profile" />;
 		}
@@ -24,16 +20,6 @@ class LoginPageContainer extends Component {
 	}
 }
 
-// const mapStateToProps = ({ login: { userNameText, passwordText, status, isLoggedIn, errorMsg, isLoading } }) => {
-// 	return {
-// 		userNameText,
-// 		passwordText,
-// 		status,
-// 		isLoggedIn,
-// 		errorMsg,
-// 		isLoading,
-// 	};
-// };
 const mapStateToProps = ({ login }) => {
 	return {
 		...login,
