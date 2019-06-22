@@ -23,6 +23,12 @@ const loginRreducer = (state = initialState, action) => {
 				userNameText: updateText(userNameText, text),
 			};
 		}
+		case CHANGE_PASSWORD_TEXT: {
+			return {
+				...state,
+				passwordText: updateText(passwordText, text),
+			};
+		}
 		default:
 			return state;
 	}
