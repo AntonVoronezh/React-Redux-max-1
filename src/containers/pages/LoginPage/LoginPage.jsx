@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LoginPage } from '../../../components/pages';
+import {changeUsernameTextAC, changePasswordTextAC} from '../../../store/actions'
 
 class LoginPageContainer extends Component {
 	// if (loading) {
@@ -18,15 +19,17 @@ class LoginPageContainer extends Component {
 	}
 }
 
-const mapStateToProps = ({login}) => {
+const mapStateToProps = ({ login: { userNameText, passwordText } }) => {
 	return {
-		// activePage,
+		userNameText,
+		passwordText,
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		// onChange: page => dispatch(changeActivePageAC(page)),
+		onUsernameChange: text => dispatch(changeUsernameTextAC(text)),
+		onPasswordChange: text => dispatch(changePasswordTextAC(text)),
 	};
 };
 
