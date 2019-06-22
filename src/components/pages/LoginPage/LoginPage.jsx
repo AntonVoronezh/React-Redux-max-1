@@ -5,18 +5,26 @@ import { Redirect } from 'react-router-dom';
 import { ErrorButton } from '../../errors';
 import { Button, Form, Segment } from 'semantic-ui-react';
 
-const LoginPage = ({ onLogin, isLoggedIn }) => {
+const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordChange }) => {
 	const submitFormHandler = () => {
 		console.log('submitFormHandler');
 	};
 
-	if (isLoggedIn) {
-		return <Redirect to="/profile" />;
-	}
+	// if (isLoggedIn) {
+	// 	return <Redirect to="/profile" />;
+	// }
+
+	const usernameInputHandler = ({ nativeEvent: { data } }) => {
+		onUsernameChange(data);
+	};
+	const passwordInputHandler = ({ nativeEvent: { data } }) => {
+		onPasswordChange(data);
+	};
+
 	return (
 		<Fragment>
 			<ErrorButton />
-			<button onClick={onLogin}> LogIn</button>
+			{/* <button onClick={onLogin}> LogIn</button> */}
 			<Segment>
 				{/* {error && !isLogged ? <div className={classes.error}>Имя пользователя или пароль введены не верно </div> : null} */}
 
@@ -26,17 +34,15 @@ const LoginPage = ({ onLogin, isLoggedIn }) => {
 							fluid
 							label="Username"
 							placeholder="username"
-							// onChange={usernameInputHandler}
-							// onKeyUp={usernameKeyUpHandler}
-							// value={usernameText}
+							onChange={usernameInputHandler}
+							value={userNameText}
 						/>
 						<Form.Input
 							fluid
 							label="Password"
 							placeholder="password"
-							// onChange={passwordInputHandler}
-							// onKeyUp={passwordKeyUpHandler}
-							// value={passwordText}
+							onChange={passwordInputHandler}
+							value={passwordText}
 						/>
 					</Form.Group>
 					<Button type="submit">

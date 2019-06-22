@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LoginPage } from '../../../components/pages';
-import {changeUsernameTextAC, changePasswordTextAC} from '../../../store/actions'
+import { changeUsernameTextAC, changePasswordTextAC } from '../../../store/actions';
 
 class LoginPageContainer extends Component {
 	// if (loading) {
@@ -15,7 +15,7 @@ class LoginPageContainer extends Component {
 
 	//   return <BookList books={books} onAddedToCart={onAddedToCart}/>;
 	render() {
-		return <LoginPage />;
+		return <LoginPage {...this.props} />;
 	}
 }
 
