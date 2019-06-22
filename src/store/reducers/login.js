@@ -1,15 +1,26 @@
-import { CHANGE_ACTIVE_PAGE } from '../actions';
+import { CHANGE_USERNAME_TEXT, CHANGE_PASSWORD_TEXT } from '../actions';
 
 const initialState = {
-	activePage: '/',
+	userNameText: '',
+	passwordText: '',
+};
+
+const updateText = (oldText, payload) => {
+	if (payload === null) {
+		return oldText(0, oldText.length - 1);
+	}
+	return oldText + payload;
 };
 
 const loginRreducer = (state = initialState, action) => {
-	switch (action.type) {
-		case CHANGE_ACTIVE_PAGE: {
+	const { type, text } = action;
+	const { userNameText, passwordText } = state;
+
+	switch (type) {
+		case CHANGE_USERNAME_TEXT: {
 			return {
 				...state,
-				activePage: action.page,
+				userNameText: updateText(userNameText, text),
 			};
 		}
 		default:
