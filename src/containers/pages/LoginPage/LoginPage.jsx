@@ -4,29 +4,39 @@ import { connect } from 'react-redux';
 import { LoginPage } from '../../../components/pages';
 import { changeUsernameTextAC, changePasswordTextAC } from '../../../store/actions';
 import { Spinner } from '../../../components/elements';
-import { ErrorIndicator } from '../../../components/errors'
-
+import { ErrorIndicator } from '../../../components/errors';
 
 class LoginPageContainer extends Component {
 	render() {
-		if (this.props.isLoading) {
+		const { isLoading, isLoggedIn, ...rest } = this.props;
+
+		if (isLoading) {
 			return <Spinner />;
 		}
-		if (this.props.errorMsg) {
-			return <ErrorIndicator />;
+		// if (errorMsg) {
+		// 	return <ErrorIndicator />;
+		// }
+		if (isLoggedIn) {
+			return <Redirect to="/profile" />;
 		}
-		return <LoginPage {...this.props} />;
+
+		return <LoginPage {...rest} />;
 	}
 }
 
-const mapStateToProps = ({ login: { userNameText, passwordText, status, isLoggedIn, errorMsg, isLoading } }) => {
+// const mapStateToProps = ({ login: { userNameText, passwordText, status, isLoggedIn, errorMsg, isLoading } }) => {
+// 	return {
+// 		userNameText,
+// 		passwordText,
+// 		status,
+// 		isLoggedIn,
+// 		errorMsg,
+// 		isLoading,
+// 	};
+// };
+const mapStateToProps = ({ login }) => {
 	return {
-		userNameText,
-		passwordText,
-		status,
-		isLoggedIn,
-		errorMsg,
-		isLoading,
+		...login,
 	};
 };
 

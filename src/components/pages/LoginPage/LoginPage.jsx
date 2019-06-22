@@ -1,18 +1,13 @@
 import React, { Fragment } from 'react';
 import './LoginPage.scss';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
 import { ErrorButton } from '../../errors';
 import { Button, Form, Segment } from 'semantic-ui-react';
 
-const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordChange }) => {
+const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordChange, errorMsg }) => {
 	const submitFormHandler = () => {
 		console.log('submitFormHandler');
 	};
-
-	// if (isLoggedIn) {
-	// 	return <Redirect to="/profile" />;
-	// }
 
 	const usernameInputHandler = ({ nativeEvent: { data } }) => {
 		onUsernameChange(data);
@@ -23,13 +18,13 @@ const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordCha
 
 	const isDisabled = !(!!userNameText && !!passwordText);
 
+	const error = errorMsg ? <div>Имя пользователя или пароль введены не верно </div> : null;
+
 	return (
 		<Fragment>
 			<ErrorButton />
 			{/* <button onClick={onLogin}> LogIn</button> */}
 			<Segment>
-				{/* {error && !isLogged ? <div className={classes.error}>Имя пользователя или пароль введены не верно </div> : null} */}
-
 				<Form onSubmit={submitFormHandler}>
 					<Form.Group widths="equal">
 						<Form.Input
@@ -51,6 +46,7 @@ const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordCha
 						Submit
 					</Button>
 				</Form>
+				{error}
 			</Segment>
 		</Fragment>
 	);

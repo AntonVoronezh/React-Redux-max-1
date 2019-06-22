@@ -4,7 +4,7 @@ import { statuses } from '../../helpers';
 const initialState = {
 	userNameText: '',
 	passwordText: '',
-	isLoading: true,
+	isLoading: false,
 	status: statuses.INIT,
 	isLoggedIn: false,
 	errorMsg: null,
