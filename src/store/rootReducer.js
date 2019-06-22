@@ -1,4 +1,4 @@
-import { combineReducers, applyMiddleware } from 'redux';
+import { combineReducers } from 'redux';
 import { menuRreducer } from './reducers';
 import { loginRreducer } from './reducers';
 
@@ -7,4 +7,6 @@ const rootReducer = combineReducers({
 	login: loginRreducer,
 });
 
-export default rootReducer;
+export default rootReducer();
+
+
