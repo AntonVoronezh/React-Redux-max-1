@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
-import { LoginPage, IndexPage, NewsPage, ProfilePage } from '../pages';
+import { IndexPage, NewsPage, ProfilePage } from '../pages';
+import { LoginPage } from '../../containers/pages';
 import { TopMenu } from '../../containers/elements';
 import { Container } from 'semantic-ui-react';
 import { Route, Switch } from 'react-router-dom';

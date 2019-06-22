@@ -1,57 +1,36 @@
-import React, { Fragment } from 'react';
-import './LoginPage.scss';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { ErrorButton } from '../../errors';
-import { Button, Form, Segment } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { LoginPage } from '../../../components/pages';
 
-const LoginPage = ({ onLogin, isLoggedIn }) => {
-	const submitFormHandler = () => {
-		console.log('submitFormHandler');
-	};
+class LoginPageContainer extends Component {
+	// if (loading) {
+	// 	return <Spinner />;
+	//   }
 
-	if (isLoggedIn) {
-		return <Redirect to="/profile" />;
+	//   if (error) {
+	// 	return <ErrorIndicator />;
+	//   }
+
+	//   return <BookList books={books} onAddedToCart={onAddedToCart}/>;
+	render() {
+		return <LoginPage />;
 	}
-	return (
-		<Fragment>
-			<ErrorButton />
-			<button onClick={onLogin}> LogIn</button>
-			<Segment>
-				{/* {error && !isLogged ? <div className={classes.error}>Имя пользователя или пароль введены не верно </div> : null} */}
+}
 
-				<Form onSubmit={submitFormHandler}>
-					<Form.Group widths="equal">
-						<Form.Input
-							fluid
-							label="Username"
-							placeholder="username"
-							// onChange={usernameInputHandler}
-							// onKeyUp={usernameKeyUpHandler}
-							// value={usernameText}
-						/>
-						<Form.Input
-							fluid
-							label="Password"
-							placeholder="password"
-							// onChange={passwordInputHandler}
-							// onKeyUp={passwordKeyUpHandler}
-							// value={passwordText}
-						/>
-					</Form.Group>
-					<Button type="submit">
-						{/* <Button type="submit" disabled={!(!!usernameText && !!passwordText)}> */}
-						Submit
-					</Button>
-				</Form>
-			</Segment>
-		</Fragment>
-	);
+const mapStateToProps = () => {
+	return {
+		// activePage,
+	};
 };
 
-PropTypes.LoginPage = {
-	onLogin: PropTypes.func.isRequired,
-	isLoggedIn: PropTypes.bool.isRequired,
+const mapDispatchToProps = dispatch => {
+	return {
+		// onChange: page => dispatch(changeActivePageAC(page)),
+	};
 };
 
-export default LoginPage;
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(LoginPageContainer);

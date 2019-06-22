@@ -3,4 +3,4 @@ import LoginPage from './LoginPage';
 // import NewsPage from './NewsPage';
 // import ProfilePage from './ProfilePage';
 
-export { LoginPage};
+export { LoginPage };
