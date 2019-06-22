@@ -21,6 +21,8 @@ const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordCha
 		onPasswordChange(data);
 	};
 
+	const isDisabled = !(!!userNameText && !!passwordText);
+
 	return (
 		<Fragment>
 			<ErrorButton />
@@ -45,8 +47,7 @@ const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordCha
 							value={passwordText}
 						/>
 					</Form.Group>
-					<Button type="submit">
-						{/* <Button type="submit" disabled={!(!!usernameText && !!passwordText)}> */}
+					<Button type="submit" disabled={isDisabled}>
 						Submit
 					</Button>
 				</Form>

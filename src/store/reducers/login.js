@@ -3,6 +3,8 @@ import { CHANGE_USERNAME_TEXT, CHANGE_PASSWORD_TEXT } from '../actions';
 const initialState = {
 	userNameText: '',
 	passwordText: '',
+	isLoggedIn: false,
+	errorMsg: null,
 };
 
 const updateText = (oldText, payload) => {

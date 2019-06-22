@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers, applyMiddleware } from 'redux';
 import { menuRreducer } from './reducers';
 import { loginRreducer } from './reducers';
 
