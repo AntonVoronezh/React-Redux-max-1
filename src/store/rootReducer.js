@@ -7,6 +7,6 @@ const rootReducer = combineReducers({
 	login: loginRreducer,
 });
 
-export default rootReducer();
+export default rootReducer;
 
 

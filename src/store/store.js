@@ -1,12 +1,11 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './rootReducer';
 
-export default () => createStore(rootReducer, applyMiddleware(logger));
+const myLogger = ({ getState }) => dispatch => action => {
+	console.log(action.type);
+	console.log(getState());
 
-function logger({ getState }) {
-	return dispatch => action => {
-		console.log(getState());
+	return dispatch(action);
+};
 
-		dispatch(action);
-	};
-}
+export default () => createStore(rootReducer, applyMiddleware(myLogger));
