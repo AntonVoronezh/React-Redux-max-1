@@ -18,7 +18,7 @@ class LoginPageContainer extends Component {
 	}
 }
 
-const mapStateToProps = () => {
+const mapStateToProps = ({login}) => {
 	return {
 		// activePage,
 	};
