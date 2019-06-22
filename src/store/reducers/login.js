@@ -1,13 +1,13 @@
 import { CHANGE_USERNAME_TEXT, CHANGE_PASSWORD_TEXT } from '../actions';
-import statuses from '../../helpers'
+import { statuses } from '../../helpers';
 
 const initialState = {
 	userNameText: '',
 	passwordText: '',
+	isLoading: true,
 	status: statuses.INIT,
 	isLoggedIn: false,
 	errorMsg: null,
-
 };
 
 const updateText = (oldText, payload) => {
