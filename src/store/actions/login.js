@@ -23,8 +23,9 @@ const fetchLoginSuccessAC = () => ({
 });
 
 const FETCH_LOGIN_FAILURE = 'FETCH_LOGIN_FAILURE';
-const fetchLoginFailureAC = () => ({
+const fetchLoginFailureAC = errorMsg => ({
 	type: FETCH_LOGIN_FAILURE,
+	errorMsg,
 });
 
 const fetchLogin = service => () => (dispatch, getState) => {

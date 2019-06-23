@@ -19,7 +19,7 @@ const updateText = (oldText, payload) => {
 };
 
 const loginRreducer = (state = initialState, action) => {
-	const { type, text } = action;
+	const { type, text, errorMsg } = action;
 	const { userNameText, passwordText } = state;
 
 	switch (type) {
@@ -54,6 +54,7 @@ const loginRreducer = (state = initialState, action) => {
 			return {
 				...state,
 				status: statuses.FAILURE,
+				errorMsg: errorMsg.message,
 			};
 		}
 		default:

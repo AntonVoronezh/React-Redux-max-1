@@ -19,7 +19,7 @@ export default class AuthService {
 
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
-				if (Math.random() > 0.75) {
+				if (Math.random() > 0.1) {
 					reject(new Error('Network Error'));
 				} else {
 					resolve(data());
