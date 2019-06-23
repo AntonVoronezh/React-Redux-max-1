@@ -40,7 +40,8 @@ const fetchLogin = service => () => (dispatch, getState) => {
 		.then(data => {
 			const { status, message } = data;
 			if (status === 'ok') {
-				dispatch(fetchLoginSuccessAC(data));
+				localStorage.setItem('token', true);
+				dispatch(fetchLoginSuccessAC());
 			} else if (status === 'err') {
 				dispatch(fetchLoginFailureAC(message));
 			}
@@ -49,4 +50,12 @@ const fetchLogin = service => () => (dispatch, getState) => {
 		.catch(err => dispatch(fetchLoginFailureAC(err.message)));
 };
 
-export { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, fetchLogin };
+const autoLogin = () => dispatch => {
+		const token = localStorage.getItem('token');
+		if (token) {
+			dispatch(fetchLoginSuccessAC())
+		} 
+	};
+
+
+export { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, fetchLogin, autoLogin };

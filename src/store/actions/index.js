@@ -5,6 +5,7 @@ import {
 	changePasswordTextAC,
 	CHANGE_PASSWORD_TEXT,
 	fetchLogin,
+	autoLogin
 } from './login';
 import { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE } from './login';
 
@@ -19,4 +20,5 @@ export {
 	FETCH_LOGIN_REQUEST,
 	FETCH_LOGIN_SUCCESS,
 	FETCH_LOGIN_FAILURE,
+	autoLogin
 };
