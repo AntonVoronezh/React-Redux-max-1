@@ -18,7 +18,7 @@ const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordCha
 
 	const isDisabled = !(!!userNameText && !!passwordText);
 
-	const error = errorMsg ? <div>Имя пользователя или пароль введены не верно </div> : null;
+	const error = errorMsg ? <div>{errorMsg}</div> : null;
 
 	return (
 		<Fragment>
