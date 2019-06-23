@@ -27,8 +27,8 @@ const fetchLoginFailureAC = () => ({
 	type: FETCH_LOGIN_FAILURE,
 });
 
-const fetchLogin = service => () => (dispatch, getState) => {
-	console.log('fetchLogin');
+const fetchLogin = (service) => () => (dispatch, getState) => {
+	console.log('fetchLogin', getState());
 	// debugger
 	// dispatch(fetchLoginRequestAC());
 	// service.tryLogin();

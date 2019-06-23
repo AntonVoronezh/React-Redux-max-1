@@ -11,6 +11,8 @@ const myLogger = ({ getState }) => dispatch => action => {
 function createThunkMiddleware(extraArgument) {
 	return ({ dispatch, getState }) => next => action => {
 	  if (typeof action === 'function') {
+		//   console.log('createThunkMiddleware');
+		  
 		return action(dispatch, getState, extraArgument);
 	  }
   
