@@ -1,10 +1,11 @@
 import { CHANGE_USERNAME_TEXT, CHANGE_PASSWORD_TEXT } from '../actions';
 import { statuses } from '../../helpers';
+import { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE } from '../actions'
 
 const initialState = {
 	userNameText: '',
 	passwordText: '',
-	isLoading: false,
+	// isLoading: false,
 	status: statuses.INIT,
 	isLoggedIn: false,
 	errorMsg: null,
@@ -32,6 +33,27 @@ const loginRreducer = (state = initialState, action) => {
 			return {
 				...state,
 				passwordText: updateText(passwordText, text),
+			};
+		}
+		case FETCH_LOGIN_REQUEST: {
+			return {
+				...state,
+				status: statuses.REQUEST,
+			};
+		}
+		case FETCH_LOGIN_SUCCESS: {
+			return {
+				...state,
+				status: statuses.SUCCESS,
+				userNameText: '',
+				passwordText: '',
+
+			};
+		}
+		case FETCH_LOGIN_FAILURE: {
+			return {
+				...state,
+				status: statuses.FAILURE,
 			};
 		}
 		default:
