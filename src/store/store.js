@@ -8,4 +8,18 @@ const myLogger = ({ getState }) => dispatch => action => {
 	return dispatch(action);
 };
 
-export default () => createStore(rootReducer, applyMiddleware(myLogger));
+function createThunkMiddleware(extraArgument) {
+	return ({ dispatch, getState }) => next => action => {
+	  if (typeof action === 'function') {
+		return action(dispatch, getState, extraArgument);
+	  }
+  
+	  return next(action);
+	};
+  }
+  
+  const myThunk = createThunkMiddleware();
+  myThunk.withExtraArgument = createThunkMiddleware;
+  
+
+export default () => createStore(rootReducer, applyMiddleware(myThunk, myLogger));
