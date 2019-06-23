@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import { LoginPage } from '../../../components/pages';
 import { changeUsernameTextAC, changePasswordTextAC, fetchLogin } from '../../../store/actions';
 import { Spinner } from '../../../components/elements';
 import { withAuthService } from '../../../hoc';
+import { statuses } from '../../../helpers';
 
 class LoginPageContainer extends Component {
 	render() {
 		// this.props.AuthService.tryLogin()
-		const { isLoading, isLoggedIn, ...rest } = this.props;
+		const { status, isLoggedIn, ...rest } = this.props;
 
-		if (isLoading) {
+		if (status === statuses.REQUEST) {
 			return <Spinner />;
 		}
 		if (isLoggedIn) {

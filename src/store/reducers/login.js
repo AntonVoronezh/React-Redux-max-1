@@ -55,6 +55,8 @@ const loginRreducer = (state = initialState, action) => {
 				...state,
 				status: statuses.FAILURE,
 				errorMsg: errorMsg.message,
+				userNameText: '',
+				passwordText: '',
 			};
 		}
 		default:
