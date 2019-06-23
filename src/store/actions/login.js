@@ -20,7 +20,7 @@ const fetchLoginRequestAC = () => ({
 const FETCH_LOGIN_SUCCESS = 'FETCH_LOGIN_SUCCESS';
 const fetchLoginSuccessAC = data => ({
 	type: FETCH_LOGIN_SUCCESS,
-	data
+	data,
 });
 
 const FETCH_LOGIN_FAILURE = 'FETCH_LOGIN_FAILURE';
@@ -34,12 +34,19 @@ const fetchLogin = service => () => (dispatch, getState) => {
 		login: { userNameText, passwordText },
 	} = getState();
 
-	console.log('fetchLogin');
 	dispatch(fetchLoginRequestAC());
 	service
 		.tryLogin(userNameText, passwordText)
-		.then(data => dispatch(fetchLoginSuccessAC(data)))
-		.catch(err => dispatch(fetchLoginFailureAC(err)));
+		.then(data => {
+			const { status, message } = data;
+			if (status === 'ok') {
+				dispatch(fetchLoginSuccessAC(data));
+			} else if (status === 'err') {
+				dispatch(fetchLoginFailureAC(message));
+			}
+		})
+
+		.catch(err => dispatch(fetchLoginFailureAC(err.message)));
 };
 
 export { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, fetchLogin };

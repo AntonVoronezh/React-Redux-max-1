@@ -19,7 +19,7 @@ const updateText = (oldText, payload) => {
 };
 
 const loginRreducer = (state = initialState, action) => {
-	const { type, text, errorMsg, data } = action;
+	const { type, text, errorMsg } = action;
 	const { userNameText, passwordText } = state;
 
 	switch (type) {
@@ -43,32 +43,20 @@ const loginRreducer = (state = initialState, action) => {
 			};
 		}
 		case FETCH_LOGIN_SUCCESS: {
-			if (data.status === 'ok') {
-				return {
-					...state,
-					status: statuses.SUCCESS,
-					userNameText: '',
-					passwordText: '',
-					isLoggedIn: true,
-					errorMsg: null,
-				};
-			} else if (data.status === 'err') {
-				return {
-					...state,
-					status: statuses.FAILURE,
-					userNameText: '',
-					passwordText: '',
-					errorMsg: data.message,
-				};
-			} else {
-				return state;
-			}
+			return {
+				...state,
+				status: statuses.SUCCESS,
+				userNameText: '',
+				passwordText: '',
+				isLoggedIn: true,
+				errorMsg: null,
+			};
 		}
 		case FETCH_LOGIN_FAILURE: {
 			return {
 				...state,
 				status: statuses.FAILURE,
-				errorMsg: errorMsg.message,
+				errorMsg,
 				userNameText: '',
 				passwordText: '',
 			};
