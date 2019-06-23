@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { ErrorButton } from '../../errors';
 import { Button, Form, Segment } from 'semantic-ui-react';
 
-const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordChange, errorMsg }) => {
+const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordChange, errorMsg, onLogin }) => {
 	const submitFormHandler = () => {
-		console.log('submitFormHandler');
+		onLogin();
 	};
 
 	const usernameInputHandler = ({ nativeEvent: { data } }) => {
