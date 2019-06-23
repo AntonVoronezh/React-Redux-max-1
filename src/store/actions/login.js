@@ -18,8 +18,9 @@ const fetchLoginRequestAC = () => ({
 });
 
 const FETCH_LOGIN_SUCCESS = 'FETCH_LOGIN_SUCCESS';
-const fetchLoginSuccessAC = () => ({
+const fetchLoginSuccessAC = data => ({
 	type: FETCH_LOGIN_SUCCESS,
+	data
 });
 
 const FETCH_LOGIN_FAILURE = 'FETCH_LOGIN_FAILURE';
