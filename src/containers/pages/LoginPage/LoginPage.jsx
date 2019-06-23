@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { LoginPage } from '../../../components/pages';
-import { changeUsernameTextAC, changePasswordTextAC } from '../../../store/actions';
+import { changeUsernameTextAC, changePasswordTextAC, fetchLogin } from '../../../store/actions';
 import { Spinner } from '../../../components/elements';
+import { withAuthService } from '../../../hoc';
 
 class LoginPageContainer extends Component {
 	render() {
+		// this.props.AuthService.tryLogin()
 		const { isLoading, isLoggedIn, ...rest } = this.props;
 
 		if (isLoading) {
@@ -26,14 +28,19 @@ const mapStateToProps = ({ login }) => {
 	};
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, { authService }) => {
 	return {
 		onUsernameChange: text => dispatch(changeUsernameTextAC(text)),
 		onPasswordChange: text => dispatch(changePasswordTextAC(text)),
+		onLogin: () => dispatch(fetchLogin(authService)()),
 	};
 };
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(LoginPageContainer);
+// const LoginWithAuthService = withAuthService()(LoginPageContainer);
+
+export default withAuthService()(
+	connect(
+		mapStateToProps,
+		mapDispatchToProps
+	)(LoginPageContainer)
+);
