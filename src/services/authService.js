@@ -1,7 +1,7 @@
 export default class AuthService {
 	tryLogin(username, password) {
 		const data = () => {
-			if (username === 'a' && password === '1') {
+			if (username === '1' && password === '1') {
 				return {
 					status: 'ok',
 					data: {

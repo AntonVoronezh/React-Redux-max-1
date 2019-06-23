@@ -10,7 +10,6 @@ import { statuses } from '../../../helpers';
 
 class LoginPageContainer extends Component {
 	render() {
-		// this.props.AuthService.tryLogin()
 		const { status, isLoggedIn, ...rest } = this.props;
 
 		if (status === statuses.REQUEST) {

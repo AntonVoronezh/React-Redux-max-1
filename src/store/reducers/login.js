@@ -20,7 +20,6 @@ const updateText = (oldText, payload) => {
 
 const loginRreducer = (state = initialState, action) => {
 	const { type, text, errorMsg, data } = action;
-	debugger;
 	const { userNameText, passwordText } = state;
 
 	switch (type) {
