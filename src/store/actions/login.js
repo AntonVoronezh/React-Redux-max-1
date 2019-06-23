@@ -27,13 +27,17 @@ const fetchLoginFailureAC = () => ({
 	type: FETCH_LOGIN_FAILURE,
 });
 
-const fetchLogin = (service) => () => (dispatch, getState) => {
-	console.log('fetchLogin', getState());
-	// debugger
-	// dispatch(fetchLoginRequestAC());
-	// service.tryLogin();
-	// .then(data => dispatch(fetchLoginSuccessAC(data)))
-	// .catch(err => dispatch(fetchLoginFailureAC(err)));
+const fetchLogin = service => () => (dispatch, getState) => {
+	const {
+		login: { userNameText, passwordText },
+	} = getState();
+
+	console.log('fetchLogin');
+	dispatch(fetchLoginRequestAC());
+	service
+		.tryLogin(userNameText, passwordText)
+		.then(data => dispatch(fetchLoginSuccessAC(data)))
+		.catch(err => dispatch(fetchLoginFailureAC(err)));
 };
 
 export { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, fetchLogin };
