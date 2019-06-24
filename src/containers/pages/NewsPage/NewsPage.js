@@ -9,7 +9,7 @@ import { Spinner } from '../../../components/elements';
 import { withNewsapiService } from '../../../hoc';
 import { statuses } from '../../../helpers';
 
-class LoginPageContainer extends Component {
+class NewsPageContainer extends Component {
 	render() {
 		const { status, isLoggedIn, ...rest } = this.props;
 
@@ -45,5 +45,5 @@ export default withNewsapiService()(
 	connect(
 		mapStateToProps,
 		mapDispatchToProps
-	)(LoginPageContainer)
+	)(NewsPageContainer)
 );
