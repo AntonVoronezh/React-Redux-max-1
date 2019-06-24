@@ -8,10 +8,12 @@ import {
 	fetchLogin,
 	autoLogin,
 	logout,
-	LOGOUT
+	LOGOUT,
 } from './login';
 
 import { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE } from './login';
+
+import { FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAILURE } from './news';
 
 export {
 	changeActivePageAC,
@@ -26,5 +28,5 @@ export {
 	FETCH_LOGIN_FAILURE,
 	autoLogin,
 	logout,
-	LOGOUT
+	LOGOUT,
 };
