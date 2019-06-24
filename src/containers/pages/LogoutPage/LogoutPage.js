@@ -9,15 +9,13 @@ class LogoutPage extends Component {
 		this.props.logout();
 	}
 	render() {
-		return <Redirect to="/" />
+		return <Redirect to="/" />;
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		logout: () => dispatch(logout()),
-	};
-}
+const mapDispatchToProps = {
+	logout,
+};
 
 export default connect(
 	null,

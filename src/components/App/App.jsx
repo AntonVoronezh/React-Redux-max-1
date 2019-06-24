@@ -30,11 +30,9 @@ class App extends Component {
 	}
 }
 
-function mapDispatchToProps(dispatch) {
-	return {
-		autoLogin: () => dispatch(autoLogin()),
-	};
-}
+const mapDispatchToProps = {
+	autoLogin,
+};
 
 export default connect(
 	null,
