@@ -4,8 +4,8 @@ import { Container } from 'semantic-ui-react';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.scss';
-import { IndexPage, NewsPage } from '../pages';
-import { LoginPage, ProfilePage, LogoutPage } from '../../containers/pages';
+import { IndexPage } from '../pages';
+import { LoginPage, ProfilePage, LogoutPage, NewsPage } from '../../containers/pages';
 import { TopMenu } from '../../containers/elements';
 import { autoLogin } from '../../store/actions';
 
