@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { LoginPage } from '../../../components/pages';
 import { changeUsernameTextAC, changePasswordTextAC, fetchLogin } from '../../../store/actions';
@@ -29,15 +30,23 @@ const mapStateToProps = ({ login }) => {
 	};
 };
 
+// const mapDispatchToProps = (dispatch, { authService }) => {
+// 	return {
+// 		onUsernameChange: text => dispatch(changeUsernameTextAC(text)),
+// 		onPasswordChange: text => dispatch(changePasswordTextAC(text)),
+// 		onLogin: () => dispatch(fetchLogin(authService)()),
+// 	};
+// };
 const mapDispatchToProps = (dispatch, { authService }) => {
-	return {
-		onUsernameChange: text => dispatch(changeUsernameTextAC(text)),
-		onPasswordChange: text => dispatch(changePasswordTextAC(text)),
-		onLogin: () => dispatch(fetchLogin(authService)()),
-	};
+	return bindActionCreators(
+		{
+			onUsernameChange: changeUsernameTextAC,
+			onPasswordChange: changePasswordTextAC,
+			onLogin: fetchLogin(authService),
+		},
+		dispatch
+	);
 };
-
-// const LoginWithAuthService = withAuthService()(LoginPageContainer);
 
 export default withAuthService()(
 	connect(

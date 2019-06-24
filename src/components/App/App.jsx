@@ -30,12 +30,6 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps(state) {
-	return {
-		// isAuthenticated: !!state.auth.token,
-	};
-}
-
 function mapDispatchToProps(dispatch) {
 	return {
 		autoLogin: () => dispatch(autoLogin()),
@@ -43,6 +37,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
-	mapStateToProps,
+	null,
 	mapDispatchToProps
 )(App);
