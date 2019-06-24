@@ -10,17 +10,22 @@ import { statuses } from '../../../helpers';
 
 class NewsPageContainer extends Component {
 	componentDidMount() {
-		this.props.getNews();
+		const { news, getNews } = this.props;
+
+		if (news.length === 0) {
+			getNews();
+		}
 	}
 
 	render() {
-		const { status, isLoggedIn, ...rest } = this.props;
-
+		const { status, news, errorMsg } = this.props;
+debugger
 		if (status === statuses.REQUEST) {
+		// if (news.length === 0) {
 			return <Spinner />;
 		}
 
-		return <NewsPage {...rest} />;
+        return <NewsPage news={news} errorMsg={errorMsg}/>;
 	}
 }
 

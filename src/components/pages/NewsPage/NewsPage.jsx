@@ -1,9 +1,15 @@
 import React from 'react';
 
 import './NewsPage.scss';
+import OneNews from './OneNews';
 
-const NewsPage = () => {
-	return <h2>NewsPage</h2>;
+const NewsPage = ({ news: newsArr, errorMsg }) => {
+
+	const news = newsArr.map((n, idx) => {
+		return <OneNews key={idx} />;
+	});
+
+	return { news };
 };
 
 export default NewsPage;
