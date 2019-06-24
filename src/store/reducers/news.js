@@ -9,7 +9,7 @@ const initialState = {
 };
 
 const newsRreducer = (state = initialState, action) => {
-	const { type, text, errorMsg } = action;
+	const { type, news, errorMsg } = action;
 
 	switch (type) {
 		case FETCH_NEWS_REQUEST: {
@@ -23,9 +23,7 @@ const newsRreducer = (state = initialState, action) => {
 			return {
 				...state,
 				status: statuses.SUCCESS,
-				userNameText: '',
-				passwordText: '',
-				isLoggedIn: true,
+				news,
 				errorMsg: null,
 			};
 		}
@@ -34,8 +32,6 @@ const newsRreducer = (state = initialState, action) => {
 				...state,
 				status: statuses.FAILURE,
 				errorMsg,
-				userNameText: '',
-				passwordText: '',
 			};
 		}
 		default:

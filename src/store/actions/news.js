@@ -15,7 +15,7 @@ const fetchNewsFailureAC = errorMsg => ({
 	errorMsg,
 });
 
-const fetchLogin = service => () => (dispatch, getState) => {
+const fetchNews = service => () => (dispatch, getState) => {
 	const {
 		login: { userNameText, passwordText },
 	} = getState();

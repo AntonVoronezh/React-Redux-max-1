@@ -31,15 +31,15 @@ const mapStateToProps = ({ login }) => {
 };
 
 const mapDispatchToProps = (dispatch, { authService }) => {
-	return bindActionCreators(
-		{
-		// 	onUsernameChange: changeUsernameTextAC,
-		// 	onPasswordChange: changePasswordTextAC,
-		// 	onLogin: fetchLogin(authService),
-		// },
-		// dispatch
-	);
-};
+	// return bindActionCreators(
+	// 	{
+	// 		onUsernameChange: changeUsernameTextAC,
+	// 		onPasswordChange: changePasswordTextAC,
+	// 		onLogin: fetchLogin(authService),
+	// 	},
+	// 	dispatch
+	// );
+}
 
 export default withNewsapiService()(
 	connect(

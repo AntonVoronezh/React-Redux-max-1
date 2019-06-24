@@ -8,11 +8,11 @@ import store from './store/store';
 import App from './components/App';
 import { ErrorBoundry } from './components/errors';
 import { AuthServiceProvider, NewsapiServiceProvider } from './helpers';
-import { AuthService, NewsapiService } from './services';
+import { AuthService, NewsapiServises} from './services';
 
 const storeService = store();
 const authService = new AuthService();
-const newsapiService = new NewsapiService();
+const newsapiService = new NewsapiServises();
 
 ReactDOM.render(
 	<Provider store={storeService}>

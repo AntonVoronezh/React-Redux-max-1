@@ -30,3 +30,5 @@ export {
 	logout,
 	LOGOUT,
 };
+
+export { FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAILURE };
