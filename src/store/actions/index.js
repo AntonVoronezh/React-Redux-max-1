@@ -1,12 +1,16 @@
 import { changeActivePageAC, CHANGE_ACTIVE_PAGE } from './menu';
+
 import {
 	changeUsernameTextAC,
 	CHANGE_USERNAME_TEXT,
 	changePasswordTextAC,
 	CHANGE_PASSWORD_TEXT,
 	fetchLogin,
-	autoLogin
+	autoLogin,
+	logout,
+	LOGOUT
 } from './login';
+
 import { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE } from './login';
 
 export {
@@ -20,5 +24,7 @@ export {
 	FETCH_LOGIN_REQUEST,
 	FETCH_LOGIN_SUCCESS,
 	FETCH_LOGIN_FAILURE,
-	autoLogin
+	autoLogin,
+	logout,
+	LOGOUT
 };

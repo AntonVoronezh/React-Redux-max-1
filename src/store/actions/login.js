@@ -50,12 +50,22 @@ const fetchLogin = service => () => (dispatch, getState) => {
 		.catch(err => dispatch(fetchLoginFailureAC(err.message)));
 };
 
+export { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, fetchLogin };
+
 const autoLogin = () => dispatch => {
-		const token = localStorage.getItem('token');
-		if (token) {
-			dispatch(fetchLoginSuccessAC())
-		} 
-	};
+	const token = localStorage.getItem('token');
+	if (token) {
+		dispatch(fetchLoginSuccessAC());
+	}
+};
 
+const LOGOUT = 'LOGOUT';
+const logoutAC = () => ({
+	type: LOGOUT,
+});
+const logout = () => dispatch => {
+	localStorage.removeItem('token');
+	dispatch(logoutAC());
+};
 
-export { FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, fetchLogin, autoLogin };
+export { autoLogin, LOGOUT, logout };

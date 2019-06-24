@@ -1,9 +1,8 @@
 import React from 'react';
-import './TopMenu.scss';
 import { Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-
+import './TopMenu.scss';
 
 const TopMenu = ({ onChange, location, menuList }) => {
 	const { pathname } = location;

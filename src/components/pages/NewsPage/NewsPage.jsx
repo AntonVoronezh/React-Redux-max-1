@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+
 import './NewsPage.scss';
 
 const NewsPage = () => {
-    return <h2>NewsPage</h2>;
-}
+	return <h2>NewsPage</h2>;
+};
 
 export default NewsPage;

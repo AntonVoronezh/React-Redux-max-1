@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
-import './LoginPage.scss';
 import PropTypes from 'prop-types';
-import { ErrorButton } from '../../errors';
 import { Button, Form, Segment } from 'semantic-ui-react';
+
+import './LoginPage.scss';
+import { ErrorButton } from '../../errors';
 
 const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordChange, errorMsg, onLogin }) => {
 	const submitFormHandler = () => {
@@ -23,7 +24,6 @@ const LoginPage = ({ userNameText, passwordText, onUsernameChange, onPasswordCha
 	return (
 		<Fragment>
 			<ErrorButton />
-			{/* <button onClick={onLogin}> LogIn</button> */}
 			<Segment>
 				<Form onSubmit={submitFormHandler}>
 					<Form.Group widths="equal">
