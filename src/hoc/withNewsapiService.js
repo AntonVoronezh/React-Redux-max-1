@@ -1,17 +1,17 @@
 import React from 'react';
 
-import { AuthServiceConsumer } from '../helpers';
+import { NewsapiServiceConsumer } from '../helpers';
 
-const withAuthService = () => Wrapped => {
+const withNewsapiService = () => Wrapped => {
 	return props => {
 		return (
-			<AuthServiceConsumer>
-				{AuthService => {
-					return <Wrapped {...props} authService={AuthService} />;
+			<NewsapiServiceConsumer>
+				{NewsapiService => {
+					return <Wrapped {...props} newsapiService={NewsapiService} />;
 				}}
-			</AuthServiceConsumer>
+			</NewsapiServiceConsumer>
 		);
 	};
 };
 
-export default withAuthService;
+export default withNewsapiService;
