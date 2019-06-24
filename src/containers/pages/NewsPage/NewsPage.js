@@ -19,7 +19,6 @@ class NewsPageContainer extends Component {
 
 	render() {
 		const { status, news, errorMsg } = this.props;
-debugger
 		if (status === statuses.REQUEST) {
 		// if (news.length === 0) {
 			return <Spinner />;
