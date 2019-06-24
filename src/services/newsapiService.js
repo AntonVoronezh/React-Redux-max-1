@@ -7,17 +7,18 @@
 //    return axios.get(`${url}top-headlines?sources=bbc-news&apiKey=${apiKey}`)
 // }
 
-export default class newsapiServises {
+export default class NewsapiServises {
 	_baseUrl = 'https://newsapi.org/v2/';
-    _apiKey = '7fd45e35dc9349c8ad721a77101089d6';
-    
-    getResourse = async url => {
+	_apiKey = '7fd45e35dc9349c8ad721a77101089d6';
+
+	getResourse = async () => {
 		const response = await fetch(`${this._baseUrl}top-headlines?sources=bbc-news&apiKey=${this._apiKey}`);
 
 		if (!response.ok) {
-			throw new Error(`Could not fetch ${url}, resived ${response.status}`);
+			throw new Error(`Could not fetch ${this._baseUr}, resived ${response.status}`);
 		}
 		const body = await response.json();
+		console.log('getResourse', body);
 
 		return body;
 	};

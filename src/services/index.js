@@ -1,3 +1,4 @@
 import AuthService from './authService';
+import NewsapiServises from './newsapiService';
 
-export { AuthService };
+export { AuthService, NewsapiServises };

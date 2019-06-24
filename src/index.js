@@ -7,18 +7,21 @@ import 'semantic-ui-css/semantic.min.css';
 import store from './store/store';
 import App from './components/App';
 import { ErrorBoundry } from './components/errors';
-import { AuthServiceProvider } from './helpers';
-import { AuthService } from './services';
+import { AuthServiceProvider, NewsapiServiceProvider } from './helpers';
+import { AuthService, NewsapiService } from './services';
 
-const authService = new AuthService();
 const storeService = store();
+const authService = new AuthService();
+const newsapiService = new NewsapiService();
 
 ReactDOM.render(
 	<Provider store={storeService}>
 		<ErrorBoundry>
 			<BrowserRouter>
 				<AuthServiceProvider value={authService}>
-					<App />
+					<NewsapiServiceProvider value={newsapiService}>
+						<App />
+					</NewsapiServiceProvider>
 				</AuthServiceProvider>
 			</BrowserRouter>
 		</ErrorBoundry>
