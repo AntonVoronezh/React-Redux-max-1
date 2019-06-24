@@ -1,17 +1,17 @@
-const FETCH_LOGIN_REQUEST = 'FETCH_LOGIN_REQUEST';
-const fetchLoginRequestAC = () => ({
-	type: FETCH_LOGIN_REQUEST,
+const FETCH_NEWS_REQUEST = 'FETCH_NEWS_REQUEST';
+const fetchNewsRequestAC = () => ({
+	type: FETCH_NEWS_REQUEST,
 });
 
-const FETCH_LOGIN_SUCCESS = 'FETCH_LOGIN_SUCCESS';
-const fetchLoginSuccessAC = data => ({
-	type: FETCH_LOGIN_SUCCESS,
+const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS';
+const fetchNewsSuccessAC = data => ({
+	type: FETCH_NEWS_SUCCESS,
 	data,
 });
 
-const FETCH_LOGIN_FAILURE = 'FETCH_LOGIN_FAILURE';
-const fetchLoginFailureAC = errorMsg => ({
-	type: FETCH_LOGIN_FAILURE,
+const FETCH_NEWS_FAILURE = 'FETCH_NEWS_FAILURE';
+const fetchNewsFailureAC = errorMsg => ({
+	type: FETCH_NEWS_FAILURE,
 	errorMsg,
 });
 
@@ -20,19 +20,19 @@ const fetchLogin = service => () => (dispatch, getState) => {
 		login: { userNameText, passwordText },
 	} = getState();
 
-	dispatch(fetchLoginRequestAC());
+	dispatch(fetchNewsRequestAC());
 	service
 		.tryLogin(userNameText, passwordText)
 		.then(data => {
 			const { status, message } = data;
 			if (status === 'ok') {
 				localStorage.setItem('token', true);
-				dispatch(fetchLoginSuccessAC());
+				dispatch(fetchNewsSuccessAC());
 			} else if (status === 'err') {
-				dispatch(fetchLoginFailureAC(message));
+				dispatch(fetchNewsFailureAC(message));
 			}
 		})
 
-		.catch(err => dispatch(fetchLoginFailureAC(err.message)));
+		.catch(err => dispatch(fetchNewsFailureAC(err.message)));
 };
 
