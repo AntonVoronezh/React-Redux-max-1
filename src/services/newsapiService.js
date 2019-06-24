@@ -18,8 +18,6 @@ export default class NewsapiServises {
 			throw new Error(`Could not fetch ${this._baseUr}, resived ${response.status}`);
 		}
 		const body = await response.json();
-		console.log('getResourse', body);
-
 		return body;
 	};
 }

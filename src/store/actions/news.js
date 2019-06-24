@@ -4,9 +4,9 @@ const fetchNewsRequestAC = () => ({
 });
 
 const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS';
-const fetchNewsSuccessAC = data => ({
+const fetchNewsSuccessAC = news => ({
 	type: FETCH_NEWS_SUCCESS,
-	data,
+	news,
 });
 
 const FETCH_NEWS_FAILURE = 'FETCH_NEWS_FAILURE';
@@ -15,24 +15,22 @@ const fetchNewsFailureAC = errorMsg => ({
 	errorMsg,
 });
 
-const fetchNews = service => () => (dispatch, getState) => {
-	const {
-		login: { userNameText, passwordText },
-	} = getState();
-
+const fetchNews = service => () => dispatch => {
 	dispatch(fetchNewsRequestAC());
 	service
-		.tryLogin(userNameText, passwordText)
+		.getResourse()
 		.then(data => {
-			const { status, message } = data;
+			const { status, articles } = data;
+
 			if (status === 'ok') {
-				localStorage.setItem('token', true);
-				dispatch(fetchNewsSuccessAC());
+				dispatch(fetchNewsSuccessAC(articles));
 			} else if (status === 'err') {
-				dispatch(fetchNewsFailureAC(message));
+				dispatch(fetchNewsFailureAC('Данные не получены'));
 			}
+			console.log('fetchNews', articles);
 		})
 
 		.catch(err => dispatch(fetchNewsFailureAC(err.message)));
 };
 
+export { fetchNews, FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS, FETCH_NEWS_FAILURE };

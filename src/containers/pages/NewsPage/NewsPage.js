@@ -1,45 +1,43 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { NewsPage } from '../../../components/pages';
-import { changeUsernameTextAC, changePasswordTextAC, fetchLogin } from '../../../store/actions';
+import { fetchNews } from '../../../store/actions';
 import { Spinner } from '../../../components/elements';
 import { withNewsapiService } from '../../../hoc';
 import { statuses } from '../../../helpers';
 
 class NewsPageContainer extends Component {
+	componentDidMount() {
+		this.props.getNews();
+	}
+
 	render() {
 		const { status, isLoggedIn, ...rest } = this.props;
 
-		// if (status === statuses.REQUEST) {
-		// 	return <Spinner />;
-		// }
-		// if (isLoggedIn) {
-		// 	return <Redirect to="/profile" />;
-		// }
+		if (status === statuses.REQUEST) {
+			return <Spinner />;
+		}
 
 		return <NewsPage {...rest} />;
 	}
 }
 
-const mapStateToProps = ({ login }) => {
+const mapStateToProps = ({ news }) => {
 	return {
-		// ...login,
+		...news,
 	};
 };
 
-const mapDispatchToProps = (dispatch, { authService }) => {
-	// return bindActionCreators(
-	// 	{
-	// 		onUsernameChange: changeUsernameTextAC,
-	// 		onPasswordChange: changePasswordTextAC,
-	// 		onLogin: fetchLogin(authService),
-	// 	},
-	// 	dispatch
-	// );
-}
+const mapDispatchToProps = (dispatch, { newsapiService }) => {
+	return bindActionCreators(
+		{
+			getNews: fetchNews(newsapiService),
+		},
+		dispatch
+	);
+};
 
 export default withNewsapiService()(
 	connect(
