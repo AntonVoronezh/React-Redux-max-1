@@ -30,13 +30,6 @@ const mapStateToProps = ({ login }) => {
 	};
 };
 
-// const mapDispatchToProps = (dispatch, { authService }) => {
-// 	return {
-// 		onUsernameChange: text => dispatch(changeUsernameTextAC(text)),
-// 		onPasswordChange: text => dispatch(changePasswordTextAC(text)),
-// 		onLogin: () => dispatch(fetchLogin(authService)()),
-// 	};
-// };
 const mapDispatchToProps = (dispatch, { authService }) => {
 	return bindActionCreators(
 		{
